@@ -4,40 +4,40 @@ This data set has two analogous components: "test" and "train".  Each of the two
 
 features.txt
 activity_labels.txt
-<test or train>/subject_<test or train>.txt
-<test or train>/X_<test or train>.txt
-<test or train>/y_<test or train>.txt
-<test or train>/Inertial Signals/body_acc_x_<test or train>.txt
-<test or train>/Inertial Signals/body_gyro_z_<test or train>.txt
-<test or train>/Inertial Signals/total_acc_z_<test or train>.txt
-<test or train>/Inertial Signals/total_acc_x_<test or train>.txt
-<test or train>/Inertial Signals/body_acc_y_<test or train>.txt
-<test or train>/Inertial Signals/body_gyro_x_<test or train>.txt
-<test or train>/Inertial Signals/total_acc_y_<test or train>.txt
-<test or train>/Inertial Signals/body_gyro_y_<test or train>.txt
-<test or train>/Inertial Signals/body_acc_z_<test or train>.txt
+&lt;test or train>/subject_&lt;test or train>.txt
+&lt;test or train>/X_&lt;test or train>.txt
+&lt;test or train>/y_&lt;test or train>.txt
+&lt;test or train>/Inertial Signals/body_acc_x_&lt;test or train>.txt
+&lt;test or train>/Inertial Signals/body_gyro_z_&lt;test or train>.txt
+&lt;test or train>/Inertial Signals/total_acc_z_&lt;test or train>.txt
+&lt;test or train>/Inertial Signals/total_acc_x_&lt;test or train>.txt
+&lt;test or train>/Inertial Signals/body_acc_y_&lt;test or train>.txt
+&lt;test or train>/Inertial Signals/body_gyro_x_&lt;test or train>.txt
+&lt;test or train>/Inertial Signals/total_acc_y_&lt;test or train>.txt
+&lt;test or train>/Inertial Signals/body_gyro_y_&lt;test or train>.txt
+&lt;test or train>/Inertial Signals/body_acc_z_&lt;test or train>.txt
 
-The two meta-data files: features.txt and activity_labels.txt.  features.txt maps the column number in X_<test or train>.txt to a feature.  activity_labels.txt maps an activity number in y_<test or train>.txt to an activity label.
+The two meta-data files: features.txt and activity_labels.txt.  features.txt maps the column number in X_&lt;test or train>.txt to a feature.  activity_labels.txt maps an activity number in y_&lt;test or train>.txt to an activity label.
 
-There are three data files: subject_<test or train>.txt, X_<test or train>.txt and y_<test or train>.txt.  Each of the three data files contains the same number of rows, each set of three rows from each of the three files collectively make up a single data record.  X_<test or train>.txt are the features.  y_<test or train>.txt are the activities and subject_<test or train>.txt are the subjects.
+There are three data files: subject_&lt;test or train>.txt, X_&lt;test or train>.txt and y_&lt;test or train>.txt.  Each of the three data files contains the same number of rows, each set of three rows from each of the three files collectively make up a single data record.  X_&lt;test or train>.txt are the features.  y_&lt;test or train>.txt are the activities and subject_&lt;test or train>.txt are the subjects.
 
 The subjects numbers in the test and train data sets correspond to the same subject.
 
 See the web site for additional explanation about the data.
 
 The run_analysis.R script:
-1.  Reads the mean and standard deviation features (per fetaures.txt) from X_<test or train>.txt into a data.frame.
-2.  Reads the activity number data from y_<test or train>.txt and adds the activity label column (per mapping in activity_labels.txt) to the above data.frame.
-3.  Reads the subject numbers data from y_<test or train>.txt and adds the subject number column to the above data.frame (called the_data).
+1.  Reads the mean and standard deviation features (per fetaures.txt) from X_&lt;test or train>.txt into a data.frame.
+2.  Reads the activity number data from y_&lt;test or train>.txt and adds the activity label column (per mapping in activity_labels.txt) to the above data.frame.
+3.  Reads the subject numbers data from y_&lt;test or train>.txt and adds the subject number column to the above data.frame (called the_data).
 4.  Calculaties summary averages per subject/activity into a data.frame called summary_of_the_data.
 5.  Writes the summarized data to a file called "summary_of_the_data.txt".  The file is written to the working directory (UCI HAR Dataset).
 
 
 Code Book
 
-subject_number : Subject number from the subject_<test or train>.txt file.
+subject_number : Subject number from the subject_&lt;test or train>.txt file.
 
-activity : Activity labels (SITTING, STANDING, etc.)  from the activity_labels.txt file.  The activity_labels.txt file has a mapping from the integers 1 through 6 to the labels.  The  y_<test or train>.txt file contains the activity integers 1 through 6 for each row of the data. 
+activity : Activity labels (SITTING, STANDING, etc.)  from the activity_labels.txt file.  The activity_labels.txt file has a mapping from the integers 1 through 6 to the labels.  The  y_&lt;test or train>.txt file contains the activity integers 1 through 6 for each row of the data. 
 
 features : The average (mean) of the original features for the subject/activity.  All features with names containing the substrings "mean" (for example "tBodyAcc-mean()-X") or "std" (for example "tBodyAcc-std()-X") were take from the orignal data.  The averaged feature names are the original feature name with "special characters" replaced with a period, "." (for example "tBodyAcc-mean()-X" to "tBodyAcc.mean...X".
 
