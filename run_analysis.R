@@ -7,10 +7,12 @@
 # 3.  Adding activity labels
 # 4.  Summarize the data set, calculating means for all features
 #     per subject/activity.
+# 5.  Write the summarized data to a file.
 #
-# This script contains 3 functions to accomplish the above tasks.
+# This script contains 3 functions to accomplish the above tasks (see below).
 #
-# The resulting data.frame is called "the_data".
+# The resulting data.frame is called "summary_of_the_data".  The resulting file 
+# is "summary_of_the_data.txt".
 #
 ################################################################################
 
@@ -23,8 +25,8 @@ library(dplyr)
 # Read X_<test or train>.txt data:
 # 1.  Read column positions and names from features.txt.
 # 2.  Get column names with "mean" and "std" (standard deviation) substrings.
-# 3.  Read data from X_<test or train>.txt into a data.frame limiting to desired
-#     columns.
+# 3.  Read data from X_<test or train>.txt into a data.frame limited to the 
+#     desired mean and standard deviations columns.
 #
 ################################################################################
 read_data <- function(test_or_train, number_of_rows)
@@ -51,7 +53,7 @@ read_data <- function(test_or_train, number_of_rows)
    # col.names and colClasses must be the same length as the number of 
    # columns in the data file.
    #
-   # colClasses has NA for columns to keep and the string "NULL" for columns to NOT load.
+   # colClasses has NA for columns to load and the string "NULL" for columns to NOT load.
    the_data <- read.table(file = paste(test_or_train, "/X_", test_or_train, ".txt", sep = ""), as.is = TRUE, col.names = column_names, colClasses = mean_and_std_col_NA_NULLs, nrows = number_of_rows)
 
    return (the_data)
@@ -61,11 +63,11 @@ read_data <- function(test_or_train, number_of_rows)
 ################################################################################
 #
 # Add activity labels into data.frame by:
-# 1.  Read activity number to label mapping from "activity_labels.txt" file.
-# 2.  Read activity data from the "y_<test or train>.txt" file.
-# 3.  Generate an activity label column using mapping from 1. above to lookup 
+# 1.  Reading the activity number to label mapping from "activity_labels.txt" file.
+# 2.  Reading activity data from the "y_<test or train>.txt" file.
+# 3.  Generating an activity label column using mapping from 1. above to lookup 
 #     the activity label.
-# 4.  Add activity label column to the data set by lining up rows.
+# 4.  Adding the activity label column to the data set by lining up rows.
 #
 ################################################################################
 add_activities <- function(data_set, test_or_train, number_of_rows)
@@ -86,8 +88,8 @@ add_activities <- function(data_set, test_or_train, number_of_rows)
 ################################################################################
 #
 # Add subject data into the data.frame by:
-# 1.  Read subject data from "subject_<test or train>.txt" file.
-# 2.  Add subject number column to the data set by lining up rows.
+# 1.  Reading subject data from "subject_<test or train>.txt" file.
+# 2.  Adding the subject number column to the data set by lining up rows.
 #
 ################################################################################
 add_subjects <- function(data_set, test_or_train, number_of_rows)
@@ -103,7 +105,10 @@ add_subjects <- function(data_set, test_or_train, number_of_rows)
 ################################################################################
 #
 # read test data and then train data and combine with rbind into
-# a data.frame named "the_data"
+# a data.frame named "the_data" and summarize into a data.frame
+# named "summary_of_the_data".
+#
+# Finally, write the summarized data to a file.
 #
 ################################################################################
 
