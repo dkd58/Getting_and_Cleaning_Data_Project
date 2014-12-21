@@ -1,21 +1,23 @@
+<b>run_analysis.R</b>
+
 The run_analysis.R script processes the "Human Activity Recognition Using Smartphones Data Set" from this web site http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones.
 
 This data set has two analogous components: "test" and "train".  Each of the two components have the following sub-directory structure and files:
 
-features.txt
-activity_labels.txt
-&lt;test or train>/subject_&lt;test or train>.txt
-&lt;test or train>/X_&lt;test or train>.txt
-&lt;test or train>/y_&lt;test or train>.txt
-&lt;test or train>/Inertial Signals/body_acc_x_&lt;test or train>.txt
-&lt;test or train>/Inertial Signals/body_gyro_z_&lt;test or train>.txt
-&lt;test or train>/Inertial Signals/total_acc_z_&lt;test or train>.txt
-&lt;test or train>/Inertial Signals/total_acc_x_&lt;test or train>.txt
-&lt;test or train>/Inertial Signals/body_acc_y_&lt;test or train>.txt
-&lt;test or train>/Inertial Signals/body_gyro_x_&lt;test or train>.txt
-&lt;test or train>/Inertial Signals/total_acc_y_&lt;test or train>.txt
-&lt;test or train>/Inertial Signals/body_gyro_y_&lt;test or train>.txt
-&lt;test or train>/Inertial Signals/body_acc_z_&lt;test or train>.txt
+features.txt<br>
+activity_labels.txt<br>
+&lt;test or train>/subject_&lt;test or train>.txt<br>
+&lt;test or train>/X_&lt;test or train>.txt<br>
+&lt;test or train>/y_&lt;test or train>.txt<br>
+&lt;test or train>/Inertial Signals/body_acc_x_&lt;test or train>.txt<br>
+&lt;test or train>/Inertial Signals/body_gyro_z_&lt;test or train>.txt<br>
+&lt;test or train>/Inertial Signals/total_acc_z_&lt;test or train>.txt<br>
+&lt;test or train>/Inertial Signals/total_acc_x_&lt;test or train>.txt<br>
+&lt;test or train>/Inertial Signals/body_acc_y_&lt;test or train>.txt<br>
+&lt;test or train>/Inertial Signals/body_gyro_x_&lt;test or train>.txt<br>
+&lt;test or train>/Inertial Signals/total_acc_y_&lt;test or train>.txt<br>
+&lt;test or train>/Inertial Signals/body_gyro_y_&lt;test or train>.txt<br>
+&lt;test or train>/Inertial Signals/body_acc_z_&lt;test or train>.txt<br>
 
 The two meta-data files: features.txt and activity_labels.txt.  features.txt maps the column number in X_&lt;test or train>.txt to a feature.  activity_labels.txt maps an activity number in y_&lt;test or train>.txt to an activity label.
 
@@ -25,15 +27,15 @@ The subjects numbers in the test and train data sets correspond to the same subj
 
 See the web site for additional explanation about the data.
 
-The run_analysis.R script:
-1.  Reads the mean and standard deviation features (per fetaures.txt) from X_&lt;test or train>.txt into a data.frame.
-2.  Reads the activity number data from y_&lt;test or train>.txt and adds the activity label column (per mapping in activity_labels.txt) to the above data.frame.
-3.  Reads the subject numbers data from y_&lt;test or train>.txt and adds the subject number column to the above data.frame (called the_data).
-4.  Calculaties summary averages per subject/activity into a data.frame called summary_of_the_data.
-5.  Writes the summarized data to a file called "summary_of_the_data.txt".  The file is written to the working directory (UCI HAR Dataset).
+The run_analysis.R script:<br>
+1.  Reads the mean and standard deviation features (per fetaures.txt) from X_&lt;test or train>.txt into a data.frame.<br>
+2.  Reads the activity number data from y_&lt;test or train>.txt and adds the activity label column (per mapping in activity_labels.txt) to the above data.frame.<br>
+3.  Reads the subject numbers data from y_&lt;test or train>.txt and adds the subject number column to the above data.frame (called the_data).<br>
+4.  Calculaties summary averages per subject/activity into a data.frame called summary_of_the_data.<br>
+5.  Writes the summarized data to a file called "summary_of_the_data.txt".  The file is written to the working directory (UCI HAR Dataset).<br>
 
 
-Code Book
+<b>Code Book</b>
 
 subject_number : Subject number from the subject_&lt;test or train>.txt file.
 
@@ -41,84 +43,84 @@ activity : Activity labels (SITTING, STANDING, etc.)  from the activity_labels.t
 
 features : The average (mean) of the original features for the subject/activity.  All features with names containing the substrings "mean" (for example "tBodyAcc-mean()-X") or "std" (for example "tBodyAcc-std()-X") were take from the orignal data.  The averaged feature names are the original feature name with "special characters" replaced with a period, "." (for example "tBodyAcc-mean()-X" to "tBodyAcc.mean...X".
 
-A mapping of each feature name to its source feature name in the form "(feature name) : (source feature name)":
-tBodyAcc.mean...X : tBodyAcc-mean()-X
-tBodyAcc.mean...Y : tBodyAcc-mean()-Y
-tBodyAcc.mean...Z : tBodyAcc-mean()-Z
-tBodyAcc.std...X : tBodyAcc-std()-X
-tBodyAcc.std...Y : tBodyAcc-std()-Y
-tBodyAcc.std...Z : tBodyAcc-std()-Z
-tGravityAcc.mean...X : tGravityAcc-mean()-X
-tGravityAcc.mean...Y : tGravityAcc-mean()-Y
-tGravityAcc.mean...Z : tGravityAcc-mean()-Z
-tGravityAcc.std...X : tGravityAcc-std()-X
-tGravityAcc.std...Y : tGravityAcc-std()-Y
-tGravityAcc.std...Z : tGravityAcc-std()-Z
-tBodyAccJerk.mean...X : tBodyAccJerk-mean()-X
-tBodyAccJerk.mean...Y : tBodyAccJerk-mean()-Y
-tBodyAccJerk.mean...Z : tBodyAccJerk-mean()-Z
-tBodyAccJerk.std...X : tBodyAccJerk-std()-X
-tBodyAccJerk.std...Y : tBodyAccJerk-std()-Y
-tBodyAccJerk.std...Z : tBodyAccJerk-std()-Z
-tBodyGyro.mean...X : tBodyGyro-mean()-X
-tBodyGyro.mean...Y : tBodyGyro-mean()-Y
-tBodyGyro.mean...Z : tBodyGyro-mean()-Z
-tBodyGyro.std...X : tBodyGyro-std()-X
-tBodyGyro.std...Y : tBodyGyro-std()-Y
-tBodyGyro.std...Z : tBodyGyro-std()-Z
-tBodyGyroJerk.mean...X : tBodyGyroJerk-mean()-X
-tBodyGyroJerk.mean...Y : tBodyGyroJerk-mean()-Y
-tBodyGyroJerk.mean...Z : tBodyGyroJerk-mean()-Z
-tBodyGyroJerk.std...X : tBodyGyroJerk-std()-X
-tBodyGyroJerk.std...Y : tBodyGyroJerk-std()-Y
-tBodyGyroJerk.std...Z : tBodyGyroJerk-std()-Z
-tBodyAccMag.mean.. : tBodyAccMag-mean()
-tBodyAccMag.std.. : tBodyAccMag-std()
-tGravityAccMag.mean.. : tGravityAccMag-mean()
-tGravityAccMag.std.. : tGravityAccMag-std()
-tBodyAccJerkMag.mean.. : tBodyAccJerkMag-mean()
-tBodyAccJerkMag.std.. : tBodyAccJerkMag-std()
-tBodyGyroMag.mean.. : tBodyGyroMag-mean()
-tBodyGyroMag.std.. : tBodyGyroMag-std()
-tBodyGyroJerkMag.mean.. : tBodyGyroJerkMag-mean()
-tBodyGyroJerkMag.std.. : tBodyGyroJerkMag-std()
-fBodyAcc.mean...X : fBodyAcc-mean()-X
-fBodyAcc.mean...Y : fBodyAcc-mean()-Y
-fBodyAcc.mean...Z : fBodyAcc-mean()-Z
-fBodyAcc.std...X : fBodyAcc-std()-X
-fBodyAcc.std...Y : fBodyAcc-std()-Y
-fBodyAcc.std...Z : fBodyAcc-std()-Z
-fBodyAcc.meanFreq...X : fBodyAcc-meanFreq()-X
-fBodyAcc.meanFreq...Y : fBodyAcc-meanFreq()-Y
-fBodyAcc.meanFreq...Z : fBodyAcc-meanFreq()-Z
-fBodyAccJerk.mean...X : fBodyAccJerk-mean()-X
-fBodyAccJerk.mean...Y : fBodyAccJerk-mean()-Y
-fBodyAccJerk.mean...Z : fBodyAccJerk-mean()-Z
-fBodyAccJerk.std...X : fBodyAccJerk-std()-X
-fBodyAccJerk.std...Y : fBodyAccJerk-std()-Y
-fBodyAccJerk.std...Z : fBodyAccJerk-std()-Z
-fBodyAccJerk.meanFreq...X : fBodyAccJerk-meanFreq()-X
-fBodyAccJerk.meanFreq...Y : fBodyAccJerk-meanFreq()-Y
-fBodyAccJerk.meanFreq...Z : fBodyAccJerk-meanFreq()-Z
-fBodyGyro.mean...X : fBodyGyro-mean()-X
-fBodyGyro.mean...Y : fBodyGyro-mean()-Y
-fBodyGyro.mean...Z : fBodyGyro-mean()-Z
-fBodyGyro.std...X : fBodyGyro-std()-X
-fBodyGyro.std...Y : fBodyGyro-std()-Y
-fBodyGyro.std...Z : fBodyGyro-std()-Z
-fBodyGyro.meanFreq...X : fBodyGyro-meanFreq()-X
-fBodyGyro.meanFreq...Y : fBodyGyro-meanFreq()-Y
-fBodyGyro.meanFreq...Z : fBodyGyro-meanFreq()-Z
-fBodyAccMag.mean.. : fBodyAccMag-mean()
-fBodyAccMag.std.. : fBodyAccMag-std()
-fBodyAccMag.meanFreq.. : fBodyAccMag-meanFreq()
-fBodyBodyAccJerkMag.mean.. : fBodyBodyAccJerkMag-mean()
-fBodyBodyAccJerkMag.std.. : fBodyBodyAccJerkMag-std()
-fBodyBodyAccJerkMag.meanFreq.. : fBodyBodyAccJerkMag-meanFreq()
-fBodyBodyGyroMag.mean.. : fBodyBodyGyroMag-mean()
-fBodyBodyGyroMag.std.. : fBodyBodyGyroMag-std()
-fBodyBodyGyroMag.meanFreq.. : fBodyBodyGyroMag-meanFreq()
-fBodyBodyGyroJerkMag.mean.. : fBodyBodyGyroJerkMag-mean()
-fBodyBodyGyroJerkMag.std.. : fBodyBodyGyroJerkMag-std()
-fBodyBodyGyroJerkMag.meanFreq.. : fBodyBodyGyroJerkMag-meanFreq()
+A mapping of each feature name to its source feature name in the form "(feature name) : (source feature name)":<br>
+tBodyAcc.mean...X : tBodyAcc-mean()-X<br>
+tBodyAcc.mean...Y : tBodyAcc-mean()-Y<br>
+tBodyAcc.mean...Z : tBodyAcc-mean()-Z<br>
+tBodyAcc.std...X : tBodyAcc-std()-X<br>
+tBodyAcc.std...Y : tBodyAcc-std()-Y<br>
+tBodyAcc.std...Z : tBodyAcc-std()-Z<br>
+tGravityAcc.mean...X : tGravityAcc-mean()-X<br>
+tGravityAcc.mean...Y : tGravityAcc-mean()-Y<br>
+tGravityAcc.mean...Z : tGravityAcc-mean()-Z<br>
+tGravityAcc.std...X : tGravityAcc-std()-X<br>
+tGravityAcc.std...Y : tGravityAcc-std()-Y<br>
+tGravityAcc.std...Z : tGravityAcc-std()-Z<br>
+tBodyAccJerk.mean...X : tBodyAccJerk-mean()-X<br>
+tBodyAccJerk.mean...Y : tBodyAccJerk-mean()-Y<br>
+tBodyAccJerk.mean...Z : tBodyAccJerk-mean()-Z<br>
+tBodyAccJerk.std...X : tBodyAccJerk-std()-X<br>
+tBodyAccJerk.std...Y : tBodyAccJerk-std()-Y<br>
+tBodyAccJerk.std...Z : tBodyAccJerk-std()-Z<br>
+tBodyGyro.mean...X : tBodyGyro-mean()-X<br>
+tBodyGyro.mean...Y : tBodyGyro-mean()-Y<br>
+tBodyGyro.mean...Z : tBodyGyro-mean()-Z<br>
+tBodyGyro.std...X : tBodyGyro-std()-X<br>
+tBodyGyro.std...Y : tBodyGyro-std()-Y<br>
+tBodyGyro.std...Z : tBodyGyro-std()-Z<br>
+tBodyGyroJerk.mean...X : tBodyGyroJerk-mean()-X<br>
+tBodyGyroJerk.mean...Y : tBodyGyroJerk-mean()-Y<br>
+tBodyGyroJerk.mean...Z : tBodyGyroJerk-mean()-Z<br>
+tBodyGyroJerk.std...X : tBodyGyroJerk-std()-X<br>
+tBodyGyroJerk.std...Y : tBodyGyroJerk-std()-Y<br>
+tBodyGyroJerk.std...Z : tBodyGyroJerk-std()-Z<br>
+tBodyAccMag.mean.. : tBodyAccMag-mean()<br>
+tBodyAccMag.std.. : tBodyAccMag-std()<br>
+tGravityAccMag.mean.. : tGravityAccMag-mean()<br>
+tGravityAccMag.std.. : tGravityAccMag-std()<br>
+tBodyAccJerkMag.mean.. : tBodyAccJerkMag-mean()<br>
+tBodyAccJerkMag.std.. : tBodyAccJerkMag-std()<br>
+tBodyGyroMag.mean.. : tBodyGyroMag-mean()<br>
+tBodyGyroMag.std.. : tBodyGyroMag-std()<br>
+tBodyGyroJerkMag.mean.. : tBodyGyroJerkMag-mean()<br>
+tBodyGyroJerkMag.std.. : tBodyGyroJerkMag-std()<br>
+fBodyAcc.mean...X : fBodyAcc-mean()-X<br>
+fBodyAcc.mean...Y : fBodyAcc-mean()-Y<br>
+fBodyAcc.mean...Z : fBodyAcc-mean()-Z<br>
+fBodyAcc.std...X : fBodyAcc-std()-X<br>
+fBodyAcc.std...Y : fBodyAcc-std()-Y<br>
+fBodyAcc.std...Z : fBodyAcc-std()-Z<br>
+fBodyAcc.meanFreq...X : fBodyAcc-meanFreq()-X<br>
+fBodyAcc.meanFreq...Y : fBodyAcc-meanFreq()-Y<br>
+fBodyAcc.meanFreq...Z : fBodyAcc-meanFreq()-Z<br>
+fBodyAccJerk.mean...X : fBodyAccJerk-mean()-X<br>
+fBodyAccJerk.mean...Y : fBodyAccJerk-mean()-Y<br>
+fBodyAccJerk.mean...Z : fBodyAccJerk-mean()-Z<br>
+fBodyAccJerk.std...X : fBodyAccJerk-std()-X<br>
+fBodyAccJerk.std...Y : fBodyAccJerk-std()-Y<br>
+fBodyAccJerk.std...Z : fBodyAccJerk-std()-Z<br>
+fBodyAccJerk.meanFreq...X : fBodyAccJerk-meanFreq()-X<br>
+fBodyAccJerk.meanFreq...Y : fBodyAccJerk-meanFreq()-Y<br>
+fBodyAccJerk.meanFreq...Z : fBodyAccJerk-meanFreq()-Z<br>
+fBodyGyro.mean...X : fBodyGyro-mean()-X<br>
+fBodyGyro.mean...Y : fBodyGyro-mean()-Y<br>
+fBodyGyro.mean...Z : fBodyGyro-mean()-Z<br>
+fBodyGyro.std...X : fBodyGyro-std()-X<br>
+fBodyGyro.std...Y : fBodyGyro-std()-Y<br>
+fBodyGyro.std...Z : fBodyGyro-std()-Z<br>
+fBodyGyro.meanFreq...X : fBodyGyro-meanFreq()-X<br>
+fBodyGyro.meanFreq...Y : fBodyGyro-meanFreq()-Y<br>
+fBodyGyro.meanFreq...Z : fBodyGyro-meanFreq()-Z<br>
+fBodyAccMag.mean.. : fBodyAccMag-mean()<br>
+fBodyAccMag.std.. : fBodyAccMag-std()<br>
+fBodyAccMag.meanFreq.. : fBodyAccMag-meanFreq()<br>
+fBodyBodyAccJerkMag.mean.. : fBodyBodyAccJerkMag-mean()<br>
+fBodyBodyAccJerkMag.std.. : fBodyBodyAccJerkMag-std()<br>
+fBodyBodyAccJerkMag.meanFreq.. : fBodyBodyAccJerkMag-meanFreq()<br>
+fBodyBodyGyroMag.mean.. : fBodyBodyGyroMag-mean()<br>
+fBodyBodyGyroMag.std.. : fBodyBodyGyroMag-std()<br>
+fBodyBodyGyroMag.meanFreq.. : fBodyBodyGyroMag-meanFreq()<br>
+fBodyBodyGyroJerkMag.mean.. : fBodyBodyGyroJerkMag-mean()<br>
+fBodyBodyGyroJerkMag.std.. : fBodyBodyGyroJerkMag-std()<br>
+fBodyBodyGyroJerkMag.meanFreq.. : fBodyBodyGyroJerkMag-meanFreq()<br>
 
