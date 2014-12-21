@@ -1,6 +1,6 @@
 The run_analysis.R script processes the "Human Activity Recognition Using Smartphones Data Set" from this web site http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones.
 
-This data set has two analogous components: "test" and "train".  Each of the two components has the following sub-directory structure and files:
+This data set has two analogous components: "test" and "train".  Each of the two components have the following sub-directory structure and files:
 
 features.txt
 activity_labels.txt
